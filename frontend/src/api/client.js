@@ -58,28 +58,46 @@ export const problemsAPI = {
 };
 
 export const sessionsAPI = {
-  create: (problemId) => api.post('/sessions', { problem_id: problemId }),
-  get: (sessionId) => api.get(`/sessions/${sessionId}`),
-  submitAttempt: (sessionId, code, language = 'python') => 
-    api.post(`/sessions/${sessionId}/attempt`, { code, language }),
-  requestHint: (sessionId, requestedLevel = null) => 
-    api.post(`/sessions/${sessionId}/hint`, { requested_level: requestedLevel }),
-  getSolution: (sessionId) => api.get(`/sessions/${sessionId}/solution`),
+  create: (problemId) =>
+    api.post('/api/sessions', { problem_id: problemId }),
+
+  get: (sessionId) =>
+    api.get(`/api/sessions/${sessionId}`),
+
+  submitAttempt: (sessionId, code, language = 'python') =>
+    api.post(`/api/sessions/${sessionId}/attempt`, {
+      code,
+      language,
+    }),
+
+  requestHint: (sessionId, requestedLevel = null) =>
+    api.post(`/api/sessions/${sessionId}/hint`, {
+      requested_level: requestedLevel,
+    }),
+
+  getSolution: (sessionId) =>
+    api.get(`/api/sessions/${sessionId}/solution`),
 };
 
 export const tutorAPI = {
-  chat: (data) => api.post('/tutor/chat', data),
-  customProblem: (data) => api.post('/tutor/custom-problem', data),
+  chat: (data) => api.post('/api/tutor/chat', data),
+  customProblem: (data) => api.post('/api/tutor/custom-problem', data),
 };
 
 export const learnerAPI = {
   getProfile: () => api.get('/api/learner/profile'),
   getWeakTopics: () => api.get('/api/learner/weak-topics'),
-  getRecommendations: (limit = 5) =>
-    api.get('/api/learner/recommendations', { params: { limit } }),
-  getReviseMistakes: () => api.get('/api/learner/revise-mistakes'),
-  getHistory: (limit = 20) =>
-    api.get('/api/learner/history', { params: { limit } }),
-};
 
-export default api;
+  getRecommendations: (limit = 5) =>
+    api.get('/api/learner/recommendations', {
+      params: { limit },
+    }),
+
+  getReviseMistakes: () =>
+    api.get('/api/learner/revise-mistakes'),
+
+  getHistory: (limit = 20) =>
+    api.get('/api/learner/history', {
+      params: { limit },
+    }),
+};
