@@ -42,19 +42,19 @@ export const authAPI = {
 };
 
 export const profileAPI = {
-  getProfile: () => api.get('/profile'),
-  updateProfile: (data) => api.put('/profile', data),
+  getProfile: () => api.get('/api/profile'),
+  updateProfile: (data) => api.put('/api/profile', data),
 };
 
 export const assessmentAPI = {
-  start: () => api.post('/assessment/start'),
-  submit: (answers) => api.post('/assessment/submit', { answers }),
-  getLatest: () => api.get('/assessment/latest'),
+  start: () => api.post('/api/assessment/start'),
+  submit: (answers) => api.post('/api/assessment/submit', { answers }),
+  getLatest: () => api.get('/api/assessment/latest'),
 };
 
 export const problemsAPI = {
-  list: (params) => api.get('/problems', { params }),
-  getById: (id) => api.get(`/problems/${id}`),
+  list: (params) => api.get('/api/problems', { params }),
+  getById: (id) => api.get(`/api/problems/${id}`),
 };
 
 export const sessionsAPI = {
@@ -73,11 +73,13 @@ export const tutorAPI = {
 };
 
 export const learnerAPI = {
-  getProfile: () => api.get('/learner/profile'),
-  getWeakTopics: () => api.get('/learner/weak-topics'),
-  getRecommendations: (limit = 5) => api.get('/learner/recommendations', { params: { limit } }),
-  getReviseMistakes: () => api.get('/learner/revise-mistakes'),
-  getHistory: (limit = 20) => api.get('/learner/history', { params: { limit } }),
+  getProfile: () => api.get('/api/learner/profile'),
+  getWeakTopics: () => api.get('/api/learner/weak-topics'),
+  getRecommendations: (limit = 5) =>
+    api.get('/api/learner/recommendations', { params: { limit } }),
+  getReviseMistakes: () => api.get('/api/learner/revise-mistakes'),
+  getHistory: (limit = 20) =>
+    api.get('/api/learner/history', { params: { limit } }),
 };
 
 export default api;
